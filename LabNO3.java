@@ -220,12 +220,34 @@ public class LabNO3 {
                 	System.out.println("El resultado del cuadrado por cola es:\t"+ cuadradoCola2);
                 	break;
                 case 9:
-                	System.out.println("Introduzca el primer numero:");
+                	System.out.println("Introduzca el numero para la suma recursiva:");
                 	int numArray = sn.nextInt();
-					int sumRec = SumaRecur(numArray);
-                	System.out.println("La suma recursiva es: "+ sumRec);
-                	System.out.println("-------------------------------------------");
+                	int sumRec = numArray;
                 	
+					Scanner op = new Scanner(System.in);
+					System.out.println("Elija una de las siguientes opciones");
+                	if (opcion == 9) {
+                		 while(!salir){
+                			  	System.out.println("Escribe 1 para Sumar recursivamente");
+                	            System.out.println("Escribe 1 para Sumar desde ese numero hasta el 100, solo pares ");
+                	            System.out.println("Escribe 3 para Serie Fibonacci ");
+                	            System.out.println("Escribe 4 para división por restas sucesivas");
+                	            opcion2 = op.nextInt();
+                	            
+                	            
+            	            switch(opcion2) {
+            	            case 1:
+            	            	System.out.println("La suma recursiva es:");
+            	            	sumRec = SumaRecur(numArray);
+            	            	System.out.println( sumRec);
+        	            	break;
+            	            case 2:
+                        		System.out.println("La suma recursiva de numeros pares hasta el 100 es:");
+                        		int numArray1 = numArray;
+                            	numArray1 = sumar1_100_pares_rec1(numArray1);
+                            	System.out.println(numArray1);
+                            	System.out.println("-------------------------------------------");
+		                	break;
                 case 10:
                 	System.out.println("Introduzca el numero que quieres retroceder:");
                     int num4 = sn.nextInt();
@@ -238,27 +260,8 @@ public class LabNO3 {
                 	//salir=true;
                 	//break;
                 default:
-                	Scanner op = new Scanner(System.in);
-                	if (opcion == 9) {
-                		 while(!salir){
-                			  	System.out.println("Escribe 1 para Sumar desde ese numero hasta el 100, solo pares ");
-                	            System.out.println("Escribe 2 para Positivo? o Negativo? ");
-                	            System.out.println("Escribe 3 para Serie Fibonacci ");
-                	            System.out.println("Escribe 4 para división por restas sucesivas");
-                	            opcion2 = op.nextInt();
-                	            
-                	            
-            	            switch(opcion2) {
-            	            case 1:
-                        		System.out.println("La suma recursiva de ese numero hasta el 100 es:");
-                        		int numArray1 = sn.nextInt();
-                            	numArray1 = sumar1_100_pares_rec1(numArray1);
-                            	System.out.println("-------------------------------------------");
-                            	
-                            	
-            	            case 2:
-                        	}    	            
-            	            
+                
+                        	}    	             
             	        }
                 	}
                 }
