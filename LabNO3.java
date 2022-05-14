@@ -111,7 +111,42 @@ public class LabNO3 {
             
         }
  }
-     
+   static int sumar1_100_pares_rec_porCola (int n)
+   {
+           if ( n ==100){
+                       return 100;   
+               }
+           else {
+        	   int total = (n+2) +(n+2);
+            return n + sumar1_100_pares_rec_porCola (total);
+           }
+    } 
+    
+    
+    
+     static int sumar1_100_pares_rec2 (int n )
+   {
+           if ( n < 0 || n >=100) {
+                       return 0;   
+               }
+           else {
+               if (n%2 == 0)
+                  return n + sumar1_100_pares_rec1 (n+2);
+               else 
+                    return sumar1_100_pares_rec1 (n+1);
+               
+           }
+   }
+        
+    
+     int sumarRangoValoresMultiploDado (int ini, int fin, int multiplo )
+   { int suma =0;
+       for (int i = ini; i<= fin; i++){
+           if (i%multiplo == 0)
+           {suma = suma + i;}
+       }
+       return suma;
+    }
    
    
    public  static int  cuentaAtrasRec2  ( int n) {
@@ -123,10 +158,14 @@ public class LabNO3 {
    }  return cuentaAtrasRec2 (n-1);
        }
  
-   
-   
- 
-   
+   public static long PotenciaMN  (long numPot, long numPot2)
+   {
+	    if (numPot2== 1) {
+	        return numPot;
+	    } else {
+	        return numPot * PotenciaMN(numPot, numPot2-1);
+	    }
+   }
    
    
    
@@ -135,7 +174,8 @@ public class LabNO3 {
     public static void main(String[] args) {
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
-        int opcion, opcion2;
+        int opcion, opcion2, opcion3;
+        int valor1= 0;
         while(!salir){
             System.out.println("Escribe 1 para Calcular el Factorial ");
             System.out.println("Escribe 2 para Positivo? o Negativo? ");
@@ -145,8 +185,9 @@ public class LabNO3 {
             System.out.println("Escribe 6 para sumar los dígitos de un número");
             System.out.println("Escribe 7 para Multiplicación utilizando el método Ruso");
             System.out.println("Escribe 8 para Calcular el cuadrado");
-            System.out.println("Escribe 9 para Suma de numeros recursivo");
-            System.out.println("Escribe 10 para contar atras metodo recursivo");
+            System.out.println("Escribe 9 para contar atras metodo recursivo");
+            System.out.println("Escribe 10 para potencial de un numero");
+            System.out.println("Escribe 11 para Suma de numeros recursivo");
             System.out.println("Solo números entre 1 y 13");
             opcion = sn.nextInt();
             
@@ -218,8 +259,24 @@ public class LabNO3 {
                 	int cuaCola = sn.nextInt();
                 	int cuadradoCola2 = cuadrado(cuaCola);
                 	System.out.println("El resultado del cuadrado por cola es:\t"+ cuadradoCola2);
+                	System.out.println("-------------------------------------------");
                 	break;
                 case 9:
+                	System.out.println("Introduzca el numero que quieres retroceder:");
+                    int num4 = sn.nextInt();
+                    num4 = cuentaAtrasRec2(num4);
+                	System.out.println("-------------------------------------------");
+                	break;
+                case 10:
+                	System.out.println("Introduzca el primer numero que quieres sacar la potencia:");
+                	long numPot = sn.nextLong();
+                	System.out.println("Introduzca el numero de la potencia:");
+                	long numPot2 = sn.nextLong();
+                	long result =  PotenciaMN(numPot,numPot2);
+                    System.out.println("La potencia es:"+ result);
+                	System.out.println("-------------------------------------------");
+                	break;
+                case 11:
                 	System.out.println("Introduzca el numero para la suma recursiva:");
                 	int numArray = sn.nextInt();
                 	int sumRec = numArray;
@@ -230,8 +287,8 @@ public class LabNO3 {
                 		 while(!salir){
                 			  	System.out.println("Escribe 1 para Sumar recursivamente");
                 	            System.out.println("Escribe 1 para Sumar desde ese numero hasta el 100, solo pares ");
-                	            System.out.println("Escribe 3 para Serie Fibonacci ");
-                	            System.out.println("Escribe 4 para división por restas sucesivas");
+                	            System.out.println("Escribe 3 para continuar ");
+                	            System.out.println("Escribe 4 para salir");
                 	            opcion2 = op.nextInt();
                 	            
                 	            
@@ -240,31 +297,57 @@ public class LabNO3 {
             	            	System.out.println("La suma recursiva es:");
             	            	sumRec = SumaRecur(numArray);
             	            	System.out.println( sumRec);
+            	            	System.out.println("-------------------------------------------"); 	
         	            	break;
             	            case 2:
                         		System.out.println("La suma recursiva de numeros pares hasta el 100 es:");
                         		int numArray1 = numArray;
                             	numArray1 = sumar1_100_pares_rec1(numArray1);
                             	System.out.println(numArray1);
-                            	System.out.println("-------------------------------------------");
-		                	break;
-                case 10:
-                	System.out.println("Introduzca el numero que quieres retroceder:");
-                    int num4 = sn.nextInt();
-                    num4 = cuentaAtrasRec2(num4);
-                	System.out.println("-------------------------------------------");
-                	break;
+                            	System.out.println("-------------------------------------------"); 	
+            	           break;
+            	           case 3:
+            	            	System.out.println("La suma recursiva de numeros pares hasta el 100 por cola es:");
+                        		int numCola = numArray;
+                            	numCola= sumar1_100_pares_rec_porCola(numCola);
+                            	System.out.println(numCola);
+                            	System.out.println("-------------------------------------------"); 	
+            	           break;
+            	           case 4:
+            	            	System.out.println("La suma recursiva de numeros pares hasta el 100 por cola es:");
+                        		int numRango = numArray;
+                        		numRango= sumar1_100_pares_rec2(numRango);
+                            	System.out.println(numRango);
+                            	System.out.println("-------------------------------------------"); 	
+            	           break;
+            	           
+                            	/*case 5:
+            					System.out.println("Escribe 1 para continuar");
+                 	           int valor1 = op.nextInt();
+                 	          
+                 	           System.out.println(valor1);
+            	            break;
+            				case 6:
+             	            	System.out.println("La suma recursiva es:");
+            	            	sumRec = SumaRecur(numArray);
+            	            	System.out.println( sumRec);
+             	            }*/
+            	            
+              
                 	
-                	
+                	/*while (opcion3) {
+                		
+                	}*/
                 	
                 	//salir=true;
                 	//break;
+                	
                 default:
-                
+
                         	}    	             
             	        }
                 	}
                 }
             }
         }
-    }
+
